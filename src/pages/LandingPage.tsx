@@ -33,12 +33,12 @@ export function LandingPage() {
             guesswork.
           </p>
           <div className="hero__ctas fade-up fade-up-delay-3">
-            <Link to="/scout" className="btn btn-primary">
-              Scout locations
+            <Link to="/partner" className="btn btn-primary">
+              View partner Top 10
             </Link>
-            <a href="#metrics" className="btn btn-ghost">
-              See what we score
-            </a>
+            <Link to="/scout" className="btn btn-ghost">
+              Scout all markets
+            </Link>
           </div>
         </div>
       </section>
@@ -74,7 +74,8 @@ export function LandingPage() {
               <h3>Define the concept profile</h3>
               <p>
                 Align demographic fit, income band, and competition tolerance to
-                your brand’s winning units.
+                your brand’s winning units — then weight the metrics that matter
+                most.
               </p>
             </div>
           </div>
@@ -91,10 +92,10 @@ export function LandingPage() {
           <div className="how-step">
             <div className="how-step__num">3</div>
             <div>
-              <h3>Rank by scored metrics</h3>
+              <h3>Deliver the Top 10</h3>
               <p>
-                Weighted 50-point scores surface strong-fit markets and flag
-                watch-list risk before you spend on site tours.
+                Business-specific 50-point scores surface the strongest-fit
+                markets for your partnered concept before site tours.
               </p>
             </div>
           </div>
@@ -131,8 +132,11 @@ export function LandingPage() {
             );
           })}
         </div>
-        <div style={{ marginTop: '1.75rem' }}>
-          <Link to="/scout" className="btn btn-copper">
+        <div style={{ marginTop: '1.75rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <Link to="/partner" className="btn btn-copper">
+            Partner Top 10 report
+          </Link>
+          <Link to="/scout" className="btn btn-ghost">
             Browse all markets
           </Link>
         </div>

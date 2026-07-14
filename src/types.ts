@@ -26,6 +26,13 @@ export interface Development {
   impact: string;
 }
 
+export interface DemographicsBreakdown {
+  age18to34: number;
+  age35to54: number;
+  familiesWithChildren: number;
+  collegeEducated: number;
+}
+
 export interface LocationProfile {
   id: string;
   name: string;
@@ -47,16 +54,46 @@ export interface LocationProfile {
   avgCommercialRent: number;
   walkScore: number;
   transitScore: number;
-  demographics: {
-    age18to34: number;
-    age35to54: number;
-    familiesWithChildren: number;
-    collegeEducated: number;
-  };
+  demographics: DemographicsBreakdown;
+  /** Baseline brand-agnostic demographic fit (0–100). */
+  demographicsFit: number;
+  /** Development pipeline strength (0–100). */
+  developmentImpact: number;
   developments: Development[];
   metrics: MetricScore[];
   overallScore: number; // average of metrics, still on /50
   recommendation: 'strong-fit' | 'promising' | 'watch' | 'pass';
+}
+
+/** Partnered franchise / multi-unit concept Locus is scouting for. */
+export interface BusinessConcept {
+  id: string;
+  partnerName: string;
+  name: string;
+  category: string;
+  tagline: string;
+  description: string;
+  format: string;
+  targetIncomeMin: number;
+  targetIncomeMax: number;
+  /** Ideal demographic mix percentages for this brand. */
+  targetDemographics: DemographicsBreakdown;
+  /** Max similar concepts the brand will tolerate in a trade area. */
+  competitionTolerance: number;
+  /** Optional per-metric weight overrides (defaults to METRIC_WEIGHTS). */
+  metricWeights?: Partial<Record<MetricKey, number>>;
+  priorities: string[];
+}
+
+/** A market rescored against a specific business concept profile. */
+export interface BusinessLocationScore {
+  location: LocationProfile;
+  businessId: string;
+  metrics: MetricScore[];
+  overallScore: number;
+  recommendation: LocationProfile['recommendation'];
+  demographicsFit: number;
+  rank: number;
 }
 
 export const METRIC_WEIGHTS: Record<MetricKey, number> = {

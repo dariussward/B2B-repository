@@ -1,4 +1,11 @@
-import type { LocationProfile, MetricKey, MetricScore } from '../types';
+import type {
+  BusinessConcept,
+  BusinessLocationScore,
+  DemographicsBreakdown,
+  LocationProfile,
+  MetricKey,
+  MetricScore,
+} from '../types';
 import { METRIC_LABELS, METRIC_WEIGHTS } from '../types';
 
 /** Clamp a raw value into a 0–50 score using linear mapping. */
@@ -14,11 +21,14 @@ export function scoreOn50(
   return Math.round(Math.min(50, Math.max(0, raw * 50)));
 }
 
-export function computeOverallScore(metrics: MetricScore[]): number {
+export function computeOverallScore(
+  metrics: MetricScore[],
+  weights: Partial<Record<MetricKey, number>> = METRIC_WEIGHTS,
+): number {
   let weighted = 0;
   let totalWeight = 0;
   for (const m of metrics) {
-    const w = METRIC_WEIGHTS[m.key] ?? 1;
+    const w = weights[m.key] ?? METRIC_WEIGHTS[m.key] ?? 1;
     weighted += m.score * w;
     totalWeight += w;
   }
@@ -34,6 +44,42 @@ export function recommendationFromScore(
   return 'pass';
 }
 
+/** How closely a market's demographic mix matches a concept's targets (0–100). */
+export function computeDemographicsFit(
+  actual: DemographicsBreakdown,
+  targets: DemographicsBreakdown,
+): number {
+  const keys: (keyof DemographicsBreakdown)[] = [
+    'age18to34',
+    'age35to54',
+    'familiesWithChildren',
+    'collegeEducated',
+  ];
+  let total = 0;
+  for (const key of keys) {
+    const diff = Math.abs(actual[key] - targets[key]);
+    // Within ~20pp is still usable; beyond that drops toward zero.
+    const closeness = Math.max(0, 1 - diff / 20);
+    total += closeness * 100;
+  }
+  return Math.round(total / keys.length);
+}
+
+/** Soft penalty when median income sits outside the brand's target band. */
+export function incomeBandFit(
+  medianIncome: number,
+  min: number,
+  max: number,
+): number {
+  if (medianIncome >= min && medianIncome <= max) return 100;
+  if (medianIncome < min) {
+    const gap = min - medianIncome;
+    return Math.max(40, Math.round(100 - (gap / min) * 80));
+  }
+  const gap = medianIncome - max;
+  return Math.max(55, Math.round(100 - (gap / max) * 50));
+}
+
 export function buildMetrics(input: {
   population: number;
   medianIncome: number;
@@ -47,9 +93,15 @@ export function buildMetrics(input: {
   avgCommercialRent: number;
   growthRate5yr: number;
   insights?: Partial<Record<MetricKey, string>>;
+  /** When set, competition is scored relative to brand tolerance. */
+  competitionTolerance?: number;
 }): MetricScore[] {
   const trafficProxy =
     input.daytimePopulation / 1000 + input.walkScore * 0.4 + input.transitScore * 0.3;
+
+  const competitionMax = input.competitionTolerance
+    ? Math.max(input.competitionTolerance * 2.5, 14)
+    : 14;
 
   const metrics: MetricScore[] = [
     {
@@ -94,7 +146,7 @@ export function buildMetrics(input: {
     {
       key: 'competition',
       label: METRIC_LABELS.competition,
-      score: scoreOn50(input.competitorsNearby, 1, 14, true),
+      score: scoreOn50(input.competitorsNearby, 1, competitionMax, true),
       value: input.competitorsNearby + ' similar concepts nearby',
       insight:
         input.insights?.competition ??
@@ -155,6 +207,84 @@ export function buildMetrics(input: {
   ];
 
   return metrics;
+}
+
+/**
+ * Rescore a market against a partnered business concept profile —
+ * dynamic demographic fit, income-band awareness, and custom weights.
+ */
+export function scoreLocationForBusiness(
+  location: LocationProfile,
+  business: BusinessConcept,
+): Omit<BusinessLocationScore, 'rank'> {
+  const demoFit = computeDemographicsFit(
+    location.demographics,
+    business.targetDemographics,
+  );
+  const incomeFit = incomeBandFit(
+    location.medianIncome,
+    business.targetIncomeMin,
+    business.targetIncomeMax,
+  );
+  // Blend demographic mix with income-band fit for the brand index.
+  const demographicsFit = Math.round(demoFit * 0.7 + incomeFit * 0.3);
+
+  const metrics = buildMetrics({
+    population: location.population,
+    medianIncome: location.medianIncome,
+    daytimePopulation: location.daytimePopulation,
+    walkScore: location.walkScore,
+    transitScore: location.transitScore,
+    demographicsFit,
+    competitorsNearby: location.competitorsNearby,
+    developmentImpact: location.developmentImpact,
+    unemploymentRate: location.unemploymentRate,
+    avgCommercialRent: location.avgCommercialRent,
+    growthRate5yr: location.growthRate5yr,
+    competitionTolerance: business.competitionTolerance,
+    insights: {
+      demographics:
+        demographicsFit >= 80
+          ? `Strong match to ${business.name}'s target guest profile.`
+          : demographicsFit >= 65
+            ? `Partial demographic overlap with ${business.name}'s winning units.`
+            : `Demographic mix sits outside ${business.name}'s core guest profile.`,
+      competition:
+        location.competitorsNearby <= business.competitionTolerance
+          ? `Within ${business.name}'s competition tolerance (${business.competitionTolerance} peers).`
+          : `Above ${business.name}'s tolerance of ${business.competitionTolerance} similar concepts.`,
+      medianIncome:
+        location.medianIncome >= business.targetIncomeMin &&
+        location.medianIncome <= business.targetIncomeMax
+          ? `Income band fits ${business.name}'s $${(business.targetIncomeMin / 1000).toFixed(0)}–${(business.targetIncomeMax / 1000).toFixed(0)}k target.`
+          : `Median income sits outside ${business.name}'s preferred band.`,
+    },
+  });
+
+  const weights = { ...METRIC_WEIGHTS, ...business.metricWeights };
+  const overallScore = computeOverallScore(metrics, weights);
+
+  return {
+    location,
+    businessId: business.id,
+    metrics,
+    overallScore,
+    recommendation: recommendationFromScore(overallScore),
+    demographicsFit,
+  };
+}
+
+/** Rank all markets for a business and return the top N. */
+export function getTopLocationsForBusiness(
+  locations: LocationProfile[],
+  business: BusinessConcept,
+  n = 10,
+): BusinessLocationScore[] {
+  return [...locations]
+    .map((loc) => scoreLocationForBusiness(loc, business))
+    .sort((a, b) => b.overallScore - a.overallScore)
+    .slice(0, n)
+    .map((entry, index) => ({ ...entry, rank: index + 1 }));
 }
 
 export function formatRecommendation(
