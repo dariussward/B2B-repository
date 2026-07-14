@@ -30,9 +30,10 @@ export function Header() {
             Overview
           </NavLink>
           <NavLink to="/scout">Scout</NavLink>
+          <NavLink to="/partner">Partner</NavLink>
         </nav>
-        <NavLink to="/scout" className="btn btn-primary">
-          Open scout
+        <NavLink to="/partner" className="btn btn-primary">
+          Top 10 report
         </NavLink>
       </div>
     </header>
