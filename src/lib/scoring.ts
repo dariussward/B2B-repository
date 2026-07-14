@@ -100,7 +100,7 @@ export function buildMetrics(input: {
     input.daytimePopulation / 1000 + input.walkScore * 0.4 + input.transitScore * 0.3;
 
   const competitionMax = input.competitionTolerance
-    ? Math.max(input.competitionTolerance + 4, 8)
+    ? Math.max(input.competitionTolerance * 2.5, 14)
     : 14;
 
   const metrics: MetricScore[] = [
