@@ -30,9 +30,10 @@ export function Header() {
             Overview
           </NavLink>
           <NavLink to="/scout">Scout</NavLink>
+          <NavLink to="/intelligence">Intelligence</NavLink>
         </nav>
-        <NavLink to="/scout" className="btn btn-primary">
-          Open scout
+        <NavLink to="/intelligence" className="btn btn-primary">
+          Open database
         </NavLink>
       </div>
     </header>
@@ -43,8 +44,8 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <p>
-        <strong>Locus</strong> — franchise location intelligence. Metrics scored
-        on a 50-point scale.
+        <strong>Locus</strong> — franchise location intelligence & CRE
+        database. Metrics scored on a 50-point scale; centers scored 0–100.
       </p>
     </footer>
   );

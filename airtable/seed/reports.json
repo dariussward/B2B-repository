@@ -1,0 +1,75 @@
+[
+  {
+    "Report Name": "Irvine Market Entry — Northwind Coffee Q3 2026",
+    "Client": "{Clients:Northwind Coffee Co.}",
+    "Market": "Irvine, CA",
+    "Industry": "Coffee / Cafe",
+    "Date": "2026-06-08",
+    "Retail Centers Included": [
+      "{Retail Centers:Woodbury Town Center}",
+      "{Retail Centers:The Canopy at Great Park}",
+      "{Retail Centers:Irvine Spectrum Center}",
+      "{Retail Centers:Quail Hill Shopping Center}"
+    ],
+    "Opportunities Included": [
+      "{Opportunities:Northwind @ Woodbury Town Center}",
+      "{Opportunities:Northwind @ The Canopy Great Park}"
+    ],
+    "Status": "Sent"
+  },
+  {
+    "Report Name": "Great Park Pipeline Brief — Dual Brand",
+    "Client": "{Clients:Hearth & Grain Bakery}",
+    "Market": "Irvine Great Park",
+    "Industry": "QSR / Fast Casual",
+    "Date": "2026-06-18",
+    "Retail Centers Included": [
+      "{Retail Centers:The Canopy at Great Park}",
+      "{Retail Centers:Woodbury Town Center}",
+      "{Retail Centers:Quail Hill Shopping Center}"
+    ],
+    "Opportunities Included": [
+      "{Opportunities:Harbor Kitchen Drive-Thru @ Woodbury}",
+      "{Opportunities:Hearth & Grain @ Quail Hill}"
+    ],
+    "Status": "Sent"
+  },
+  {
+    "Report Name": "OC Fitness Site Screen — Volt",
+    "Client": "{Clients:Volt Fitness Studio}",
+    "Market": "Orange County",
+    "Industry": "Fitness",
+    "Date": "2026-06-20",
+    "Retail Centers Included": [
+      "{Retail Centers:Campus Plaza}",
+      "{Retail Centers:Quail Hill Shopping Center}",
+      "{Retail Centers:Diamond Jamboree}"
+    ],
+    "Opportunities Included": ["{Opportunities:Volt Fitness @ Campus Plaza}"],
+    "Status": "Internal Review"
+  },
+  {
+    "Report Name": "Austin Mueller Comparative — Northwind",
+    "Client": "{Clients:Northwind Coffee Co.}",
+    "Market": "Austin, TX",
+    "Industry": "Coffee / Cafe",
+    "Date": "2026-05-28",
+    "Retail Centers Included": ["{Retail Centers:Mueller District Retail}"],
+    "Opportunities Included": ["{Opportunities:Northwind @ Mueller District}"],
+    "Status": "Sent"
+  },
+  {
+    "Report Name": "SoCal Neighborhood Center Acquisition Screen",
+    "Client": "{Clients:Pacific Retail Partners}",
+    "Market": "Southern California",
+    "Industry": "Commercial Real Estate Investment",
+    "Date": "2026-07-01",
+    "Retail Centers Included": [
+      "{Retail Centers:Woodbury Town Center}",
+      "{Retail Centers:Quail Hill Shopping Center}",
+      "{Retail Centers:Diamond Jamboree}"
+    ],
+    "Opportunities Included": [],
+    "Status": "Draft"
+  }
+]

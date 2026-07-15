@@ -1,0 +1,54 @@
+[
+  {
+    "Brand": "Northwind Coffee",
+    "Industry": "Coffee / Cafe",
+    "Typical Square Footage": 1800,
+    "Preferred Trade Area Population": 50000,
+    "Preferred Household Income": 90000,
+    "Drive-Thru Required": false,
+    "Parking Requirement": 25,
+    "Preferred Traffic Count": 25000,
+    "Preferred Co-Tenants": "Grocery, fitness, bookstore, specialty retail",
+    "Target Customer": "Professionals 25–45, college educated, weekday AM + weekend leisure",
+    "Expansion Notes": "Prioritize walkable neighborhood and lifestyle centers; avoid over-saturated Starbucks blocks when possible."
+  },
+  {
+    "Brand": "Hearth & Grain Bakery",
+    "Industry": "QSR / Fast Casual",
+    "Typical Square Footage": 2400,
+    "Preferred Trade Area Population": 60000,
+    "Preferred Household Income": 100000,
+    "Drive-Thru Required": false,
+    "Parking Requirement": 30,
+    "Preferred Traffic Count": 30000,
+    "Preferred Co-Tenants": "Grocery, coffee, boutique fitness",
+    "Target Customer": "Affluent families and brunch-oriented weekends",
+    "Expansion Notes": "Strong fit in Irvine family corridors (Woodbury / Great Park)."
+  },
+  {
+    "Brand": "Volt Fitness Studio",
+    "Industry": "Fitness",
+    "Typical Square Footage": 3500,
+    "Preferred Trade Area Population": 55000,
+    "Preferred Household Income": 95000,
+    "Drive-Thru Required": false,
+    "Parking Requirement": 40,
+    "Preferred Traffic Count": 20000,
+    "Preferred Co-Tenants": "Juice bar, athleisure, grocery",
+    "Target Customer": "Dual-income households, ages 28–50",
+    "Expansion Notes": "Second-floor and end-cap acceptable; prioritize parking and evening access."
+  },
+  {
+    "Brand": "Harbor Drive-Thru Kitchen",
+    "Industry": "QSR / Fast Casual",
+    "Typical Square Footage": 2800,
+    "Preferred Trade Area Population": 70000,
+    "Preferred Household Income": 85000,
+    "Drive-Thru Required": true,
+    "Parking Requirement": 35,
+    "Preferred Traffic Count": 35000,
+    "Preferred Co-Tenants": "Grocery, fuel, national QSR",
+    "Target Customer": "Commuters and family dinner dayparts",
+    "Expansion Notes": "Requires dedicated drive-thru lane and stacking; Ideal outparcels at Woodbury / Canopy / Quail Hill."
+  }
+]

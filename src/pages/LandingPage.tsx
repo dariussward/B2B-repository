@@ -37,9 +37,9 @@ export function LandingPage() {
             <Link to="/scout" className="btn btn-primary">
               Scout locations
             </Link>
-            <a href="#metrics" className="btn btn-ghost">
-              See what we score
-            </a>
+            <Link to="/intelligence" className="btn btn-ghost">
+              Open intelligence DB
+            </Link>
           </div>
         </div>
       </section>

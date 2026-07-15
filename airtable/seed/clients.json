@@ -1,0 +1,50 @@
+[
+  {
+    "Company Name": "Northwind Coffee Co.",
+    "Contact Name": "Maya Chen",
+    "Position": "VP of Franchise Development",
+    "Email": "maya.chen@northwindcoffee.example",
+    "Phone": "(949) 555-0142",
+    "Industry": "Coffee / Cafe",
+    "Number of Locations": 48,
+    "Expansion Markets": "Orange County, Austin, Charlotte, Denver",
+    "Notes": "Seeking 8–12 new units in affluent Sun Belt / SoCal corridors over 24 months.",
+    "Status": "Active"
+  },
+  {
+    "Company Name": "Hearth & Grain Bakery",
+    "Contact Name": "Jordan Blake",
+    "Position": "Director of Real Estate",
+    "Email": "jblake@hearthgrain.example",
+    "Phone": "(512) 555-0198",
+    "Industry": "QSR / Fast Casual",
+    "Number of Locations": 22,
+    "Expansion Markets": "Irvine, Austin Mueller, Nashville",
+    "Notes": "Family trade areas with grocery adjacency preferred.",
+    "Status": "Proposal Sent"
+  },
+  {
+    "Company Name": "Volt Fitness Studio",
+    "Contact Name": "Priya Nair",
+    "Position": "Chief Growth Officer",
+    "Email": "priya@voltfitness.example",
+    "Phone": "(714) 555-0177",
+    "Industry": "Fitness",
+    "Number of Locations": 15,
+    "Expansion Markets": "Irvine, Newport Beach, Plano",
+    "Notes": "Evaluating Great Park and Quail Hill pads.",
+    "Status": "Active"
+  },
+  {
+    "Company Name": "Pacific Retail Partners",
+    "Contact Name": "Evan Torres",
+    "Position": "Acquisitions Analyst",
+    "Email": "etorres@pacificretail.example",
+    "Phone": "(213) 555-0110",
+    "Industry": "Commercial Real Estate Investment",
+    "Number of Locations": 0,
+    "Expansion Markets": "Southern California neighborhood centers",
+    "Notes": "Investor client seeking vacancy + income screens.",
+    "Status": "Lead"
+  }
+]
