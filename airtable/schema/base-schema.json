@@ -1,0 +1,464 @@
+{
+  "name": "Locus Location Intelligence",
+  "description": "Relational commercial real estate and business expansion intelligence database for franchises, retailers, developers, and investors.",
+  "tables": [
+    {
+      "name": "Retail Centers",
+      "description": "One record per shopping center or commercial development.",
+      "primaryField": "Shopping Center Name",
+      "fields": [
+        { "name": "Shopping Center Name", "type": "singleLineText" },
+        { "name": "Address", "type": "singleLineText" },
+        { "name": "City", "type": "singleLineText" },
+        { "name": "County", "type": "singleLineText" },
+        { "name": "State", "type": "singleLineText" },
+        { "name": "Latitude", "type": "number", "options": { "precision": 6 } },
+        { "name": "Longitude", "type": "number", "options": { "precision": 6 } },
+        {
+          "name": "Property Type",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Lifestyle Center" },
+              { "name": "Power Center" },
+              { "name": "Neighborhood Center" },
+              { "name": "Community Center" },
+              { "name": "Strip Center" },
+              { "name": "Mixed-Use" },
+              { "name": "Outlet" },
+              { "name": "Downtown Retail" }
+            ]
+          }
+        },
+        { "name": "Year Built", "type": "number", "options": { "precision": 0 } },
+        { "name": "Total Square Footage", "type": "number", "options": { "precision": 0 } },
+        { "name": "Number of Buildings", "type": "number", "options": { "precision": 0 } },
+        { "name": "Number of Units", "type": "number", "options": { "precision": 0 } },
+        { "name": "Current Vacancies", "type": "number", "options": { "precision": 0 } },
+        { "name": "Available Square Footage", "type": "number", "options": { "precision": 0 } },
+        {
+          "name": "Drive-Thru Availability",
+          "type": "checkbox",
+          "options": { "icon": "check", "color": "greenBright" }
+        },
+        { "name": "Parking Spaces", "type": "number", "options": { "precision": 0 } },
+        { "name": "Traffic Count (AADT)", "type": "number", "options": { "precision": 0 } },
+        {
+          "name": "Visibility Rating",
+          "type": "rating",
+          "options": { "icon": "star", "max": 10, "color": "yellowBright" }
+        },
+        {
+          "name": "Accessibility Rating",
+          "type": "rating",
+          "options": { "icon": "star", "max": 10, "color": "blueBright" }
+        },
+        { "name": "Owner", "type": "singleLineText" },
+        { "name": "Property Manager", "type": "singleLineText" },
+        { "name": "Leasing Contact", "type": "email" },
+        { "name": "Website", "type": "url" },
+        { "name": "Google Maps Link", "type": "url" },
+        { "name": "Notes", "type": "multilineText" },
+        { "name": "Overall Location Score", "type": "number", "options": { "precision": 0 } }
+      ]
+    },
+    {
+      "name": "Businesses / Tenants",
+      "description": "One record per business located within a retail center.",
+      "primaryField": "Business Name",
+      "fields": [
+        { "name": "Business Name", "type": "singleLineText" },
+        {
+          "name": "Category",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "QSR / Fast Casual" },
+              { "name": "Full Service Restaurant" },
+              { "name": "Coffee / Cafe" },
+              { "name": "Grocery" },
+              { "name": "Fitness" },
+              { "name": "Retail Apparel" },
+              { "name": "Beauty / Personal Care" },
+              { "name": "Medical / Dental" },
+              { "name": "Banking / Financial" },
+              { "name": "Entertainment" },
+              { "name": "Services" },
+              { "name": "Other" }
+            ]
+          }
+        },
+        {
+          "name": "Franchise",
+          "type": "checkbox",
+          "options": { "icon": "check", "color": "tealBright" }
+        },
+        { "name": "Parent Company", "type": "singleLineText" },
+        { "name": "Address", "type": "singleLineText" },
+        { "name": "Suite Number", "type": "singleLineText" },
+        { "name": "Website", "type": "url" },
+        {
+          "name": "Opening Date",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        },
+        {
+          "name": "Status",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Open" },
+              { "name": "Closed" },
+              { "name": "Coming Soon" }
+            ]
+          }
+        },
+        { "name": "Notes", "type": "multilineText" }
+      ]
+    },
+    {
+      "name": "Demographics",
+      "description": "One record per city, ZIP code, or trade area.",
+      "primaryField": "Area Name",
+      "fields": [
+        { "name": "Area Name", "type": "singleLineText" },
+        { "name": "Population", "type": "number", "options": { "precision": 0 } },
+        { "name": "Population Growth %", "type": "percent", "options": { "precision": 1 } },
+        {
+          "name": "Median Household Income",
+          "type": "currency",
+          "options": { "precision": 0, "symbol": "$" }
+        },
+        {
+          "name": "Median Home Value",
+          "type": "currency",
+          "options": { "precision": 0, "symbol": "$" }
+        },
+        { "name": "Median Age", "type": "number", "options": { "precision": 1 } },
+        { "name": "Household Size", "type": "number", "options": { "precision": 1 } },
+        { "name": "Daytime Population", "type": "number", "options": { "precision": 0 } },
+        { "name": "Employment Rate", "type": "percent", "options": { "precision": 1 } },
+        { "name": "Education Levels", "type": "multilineText" },
+        { "name": "Traffic Count", "type": "number", "options": { "precision": 0 } },
+        { "name": "Notes", "type": "multilineText" }
+      ]
+    },
+    {
+      "name": "Competitors",
+      "description": "Track competing businesses near target sites.",
+      "primaryField": "Business Name",
+      "fields": [
+        { "name": "Business Name", "type": "singleLineText" },
+        { "name": "Industry", "type": "singleLineText" },
+        { "name": "Brand", "type": "singleLineText" },
+        { "name": "Address", "type": "singleLineText" },
+        { "name": "City", "type": "singleLineText" },
+        { "name": "Latitude", "type": "number", "options": { "precision": 6 } },
+        { "name": "Longitude", "type": "number", "options": { "precision": 6 } },
+        { "name": "Website", "type": "url" },
+        { "name": "Notes", "type": "multilineText" }
+      ]
+    },
+    {
+      "name": "Development Projects",
+      "description": "Track future residential and commercial growth pipelines.",
+      "primaryField": "Project Name",
+      "fields": [
+        { "name": "Project Name", "type": "singleLineText" },
+        {
+          "name": "Project Type",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Residential" },
+              { "name": "Commercial" },
+              { "name": "Mixed-Use" },
+              { "name": "Infrastructure" },
+              { "name": "Industrial" },
+              { "name": "Hospitality" }
+            ]
+          }
+        },
+        { "name": "City", "type": "singleLineText" },
+        { "name": "Address", "type": "singleLineText" },
+        { "name": "Developer", "type": "singleLineText" },
+        {
+          "name": "Status",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Planned" },
+              { "name": "Entitled" },
+              { "name": "Under Construction" },
+              { "name": "Recently Completed" },
+              { "name": "On Hold" }
+            ]
+          }
+        },
+        { "name": "Residential Units", "type": "number", "options": { "precision": 0 } },
+        { "name": "Commercial Square Footage", "type": "number", "options": { "precision": 0 } },
+        {
+          "name": "Expected Completion Date",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        },
+        { "name": "Source", "type": "singleLineText" },
+        { "name": "Notes", "type": "multilineText" }
+      ]
+    },
+    {
+      "name": "Franchise Requirements",
+      "description": "Store expansion criteria for each brand.",
+      "primaryField": "Brand",
+      "fields": [
+        { "name": "Brand", "type": "singleLineText" },
+        { "name": "Industry", "type": "singleLineText" },
+        { "name": "Typical Square Footage", "type": "number", "options": { "precision": 0 } },
+        { "name": "Preferred Trade Area Population", "type": "number", "options": { "precision": 0 } },
+        {
+          "name": "Preferred Household Income",
+          "type": "currency",
+          "options": { "precision": 0, "symbol": "$" }
+        },
+        {
+          "name": "Drive-Thru Required",
+          "type": "checkbox",
+          "options": { "icon": "check", "color": "orangeBright" }
+        },
+        { "name": "Parking Requirement", "type": "number", "options": { "precision": 0 } },
+        { "name": "Preferred Traffic Count", "type": "number", "options": { "precision": 0 } },
+        { "name": "Preferred Co-Tenants", "type": "multilineText" },
+        { "name": "Target Customer", "type": "multilineText" },
+        { "name": "Expansion Notes", "type": "multilineText" }
+      ]
+    },
+    {
+      "name": "Opportunities",
+      "description": "Potential matches between brands and retail locations.",
+      "primaryField": "Opportunity Name",
+      "fields": [
+        { "name": "Opportunity Name", "type": "singleLineText" },
+        { "name": "Client / Brand", "type": "singleLineText" },
+        { "name": "City", "type": "singleLineText" },
+        { "name": "Score", "type": "number", "options": { "precision": 0 } },
+        {
+          "name": "Opportunity Status",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Identified" },
+              { "name": "Qualified" },
+              { "name": "Presented" },
+              { "name": "In Negotiation" },
+              { "name": "Won" },
+              { "name": "Passed" },
+              { "name": "On Hold" }
+            ]
+          }
+        },
+        { "name": "Why It Fits", "type": "multilineText" },
+        { "name": "Strengths", "type": "multilineText" },
+        { "name": "Weaknesses", "type": "multilineText" },
+        { "name": "Competition Summary", "type": "multilineText" },
+        { "name": "Nearby Developments", "type": "multilineText" },
+        { "name": "Recommended Action", "type": "multilineText" },
+        {
+          "name": "Date Created",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        },
+        {
+          "name": "Date Sent to Client",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        },
+        {
+          "name": "Follow-Up Date",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        }
+      ]
+    },
+    {
+      "name": "Clients",
+      "description": "Potential and current customers of the intelligence practice.",
+      "primaryField": "Company Name",
+      "fields": [
+        { "name": "Company Name", "type": "singleLineText" },
+        { "name": "Contact Name", "type": "singleLineText" },
+        { "name": "Position", "type": "singleLineText" },
+        { "name": "Email", "type": "email" },
+        { "name": "Phone", "type": "phoneNumber" },
+        { "name": "Industry", "type": "singleLineText" },
+        { "name": "Number of Locations", "type": "number", "options": { "precision": 0 } },
+        { "name": "Expansion Markets", "type": "multilineText" },
+        { "name": "Notes", "type": "multilineText" },
+        {
+          "name": "Status",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Lead" },
+              { "name": "Active" },
+              { "name": "Proposal Sent" },
+              { "name": "Closed Won" },
+              { "name": "Closed Lost" },
+              { "name": "Inactive" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "description": "Track every market report produced for clients.",
+      "primaryField": "Report Name",
+      "fields": [
+        { "name": "Report Name", "type": "singleLineText" },
+        { "name": "Market", "type": "singleLineText" },
+        { "name": "Industry", "type": "singleLineText" },
+        {
+          "name": "Date",
+          "type": "date",
+          "options": { "dateFormat": { "name": "local", "format": "l" } }
+        },
+        { "name": "PDF Attachment", "type": "multipleAttachments" },
+        {
+          "name": "Status",
+          "type": "singleSelect",
+          "options": {
+            "choices": [
+              { "name": "Draft" },
+              { "name": "Internal Review" },
+              { "name": "Sent" },
+              { "name": "Archived" }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "table": "Businesses / Tenants",
+      "name": "Retail Center",
+      "linkedTable": "Retail Centers",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Tenants"
+    },
+    {
+      "table": "Competitors",
+      "name": "Retail Center",
+      "linkedTable": "Retail Centers",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Competitors Nearby"
+    },
+    {
+      "table": "Development Projects",
+      "name": "Nearby Retail Centers",
+      "linkedTable": "Retail Centers",
+      "prefersSingleRecordLink": false,
+      "inverseName": "Nearby Developments"
+    },
+    {
+      "table": "Opportunities",
+      "name": "Retail Center",
+      "linkedTable": "Retail Centers",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Opportunities"
+    },
+    {
+      "table": "Opportunities",
+      "name": "Franchise Requirement",
+      "linkedTable": "Franchise Requirements",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Matched Opportunities"
+    },
+    {
+      "table": "Opportunities",
+      "name": "Client",
+      "linkedTable": "Clients",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Opportunities"
+    },
+    {
+      "table": "Reports",
+      "name": "Client",
+      "linkedTable": "Clients",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Reports"
+    },
+    {
+      "table": "Reports",
+      "name": "Retail Centers Included",
+      "linkedTable": "Retail Centers",
+      "prefersSingleRecordLink": false,
+      "inverseName": "Reports Featuring"
+    },
+    {
+      "table": "Reports",
+      "name": "Opportunities Included",
+      "linkedTable": "Opportunities",
+      "prefersSingleRecordLink": false,
+      "inverseName": "Reports Featuring"
+    },
+    {
+      "table": "Retail Centers",
+      "name": "Demographics Area",
+      "linkedTable": "Demographics",
+      "prefersSingleRecordLink": true,
+      "inverseName": "Retail Centers"
+    }
+  ],
+  "views": [
+    {
+      "table": "Retail Centers",
+      "name": "Vacant Retail Centers",
+      "filter": "Current Vacancies > 0 OR Available Square Footage > 0",
+      "sort": [{ "field": "Available Square Footage", "direction": "desc" }]
+    },
+    {
+      "table": "Retail Centers",
+      "name": "High Traffic Locations",
+      "filter": "Traffic Count (AADT) >= 35000",
+      "sort": [{ "field": "Traffic Count (AADT)", "direction": "desc" }]
+    },
+    {
+      "table": "Retail Centers",
+      "name": "Drive-Thru Opportunities",
+      "filter": "Drive-Thru Availability = checked AND Available Square Footage > 0",
+      "sort": [{ "field": "Overall Location Score", "direction": "desc" }]
+    },
+    {
+      "table": "Retail Centers",
+      "name": "Top 100 Highest Scoring Locations",
+      "filter": "Overall Location Score is not empty",
+      "sort": [{ "field": "Overall Location Score", "direction": "desc" }],
+      "limit": 100
+    },
+    {
+      "table": "Development Projects",
+      "name": "New Developments",
+      "filter": "Status = Planned OR Status = Entitled OR Status = Under Construction",
+      "sort": [{ "field": "Expected Completion Date", "direction": "asc" }]
+    },
+    {
+      "table": "Demographics",
+      "name": "High Income Markets",
+      "filter": "Median Household Income >= 100000",
+      "sort": [{ "field": "Median Household Income", "direction": "desc" }]
+    },
+    {
+      "table": "Clients",
+      "name": "Active Clients",
+      "filter": "Status = Active OR Status = Proposal Sent",
+      "sort": [{ "field": "Company Name", "direction": "asc" }]
+    },
+    {
+      "table": "Reports",
+      "name": "Reports Sent",
+      "filter": "Status = Sent",
+      "sort": [{ "field": "Date", "direction": "desc" }]
+    }
+  ]
+}

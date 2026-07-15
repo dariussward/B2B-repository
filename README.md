@@ -1,6 +1,6 @@
 # Locus — Franchise Location Intelligence
 
-B2B service that scouts the best markets for franchise expansion. Each trade area is scored across population, demographics, income, traffic, competition, developments, and more — every metric on a **50-point scale**.
+B2B service that scouts the best markets for franchise expansion and maintains a relational **Location Intelligence Database** for commercial real estate analysis. Trade areas are scored across population, demographics, income, traffic, competition, developments, and more — every metric on a **50-point scale**. Retail centers carry an overall **0–100** location score.
 
 ## Features
 
@@ -8,6 +8,35 @@ B2B service that scouts the best markets for franchise expansion. Each trade are
 - **Scout workspace** — search/filter markets, map pins, ranked shortlist
 - **Location reports** — full /50 scores, demographics, development pipeline
 - **Scoring engine** — normalizes raw signals to 0–50 with weighted overall fit
+- **Intelligence Database** (`/intelligence`) — relational CRE workspace mirroring Airtable (9 tables, saved views, center dossiers)
+
+## Location Intelligence Database
+
+Nine linked tables for expansion intelligence:
+
+1. Retail Centers  
+2. Businesses / Tenants  
+3. Demographics  
+4. Competitors  
+5. Development Projects  
+6. Franchise Requirements  
+7. Opportunities  
+8. Clients  
+9. Reports  
+
+Saved views: Vacant Centers, High Traffic, Drive-Thru Opportunities, Top Scoring Locations, New Developments, High Income Markets, Active Clients, Reports Sent.
+
+### Airtable provisioning
+
+Schema + Irvine-forward seed data live under `airtable/`. Create a live base with:
+
+```bash
+export AIRTABLE_TOKEN="pat…"
+export AIRTABLE_WORKSPACE_ID="wsp…"
+npm run airtable:provision
+```
+
+See [`airtable/README.md`](airtable/README.md) and [`airtable/VIEWS.md`](airtable/VIEWS.md).
 
 ## Metrics scored (0–50)
 
@@ -43,5 +72,6 @@ npm run preview # preview production build
 - React 19 + TypeScript
 - Vite
 - React Router
+- Optional: Airtable Meta API provisioning
 
-Sample market data is included for demo purposes (Austin Mueller, Nashville Gulch, Denver RiNo, Charlotte South End, and more).
+Sample market data includes Austin Mueller, Nashville Gulch, Denver RiNo, Charlotte South End, Irvine Spectrum / Woodbury / Great Park, and more. Use `getTopLocationsInCity('Irvine')` for the ranked Irvine shortlist.

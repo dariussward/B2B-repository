@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getTopLocations } from '../data/locations';
+import { getTopLocations, getTopLocationsInCity } from '../data/locations';
 import { formatRecommendation } from '../lib/scoring';
 
 const METRIC_PREVIEWS = [
@@ -17,6 +17,7 @@ const METRIC_PREVIEWS = [
 
 export function LandingPage() {
   const top = getTopLocations(3);
+  const irvineTop = getTopLocationsInCity('Irvine', 5);
 
   return (
     <>
@@ -36,9 +37,9 @@ export function LandingPage() {
             <Link to="/scout" className="btn btn-primary">
               Scout locations
             </Link>
-            <a href="#metrics" className="btn btn-ghost">
-              See what we score
-            </a>
+            <Link to="/intelligence" className="btn btn-ghost">
+              Open intelligence DB
+            </Link>
           </div>
         </div>
       </section>
@@ -137,6 +138,54 @@ export function LandingPage() {
           </Link>
         </div>
       </section>
+
+      {irvineTop.length > 0 && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <p className="section__eyebrow">Irvine, CA</p>
+          <h2 className="section__title">Top metric locations in Irvine</h2>
+          <p className="section__lead">
+            Ranked by weighted 50-point fit across population, income, traffic,
+            demographics, competition, developments, and growth.
+          </p>
+          <div className="preview-list">
+            {irvineTop.map((loc, i) => {
+              const rec = formatRecommendation(loc.recommendation);
+              const strongest = [...loc.metrics]
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 2);
+              return (
+                <Link
+                  key={loc.id}
+                  to={`/location/${loc.id}`}
+                  className="preview-row"
+                >
+                  <div className="preview-row__meta">
+                    <h3>
+                      #{i + 1} {loc.name}
+                    </h3>
+                    <span className="place">
+                      {loc.tradeArea} · {strongest.map((m) => `${m.label} ${m.score}`).join(' · ')}
+                    </span>
+                    <span className={`rec-pill ${rec.tone}`}>{rec.label}</span>
+                  </div>
+                  <div
+                    className="score-badge"
+                    aria-label={`Overall ${loc.overallScore} out of 50`}
+                  >
+                    <span className="score-badge__num">{loc.overallScore}</span>
+                    <span className="score-badge__denom">/50</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: '1.75rem' }}>
+            <Link to="/scout?q=Irvine" className="btn btn-ghost">
+              Scout all Irvine markets
+            </Link>
+          </div>
+        </section>
+      )}
     </>
   );
 }

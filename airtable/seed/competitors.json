@@ -1,0 +1,74 @@
+[
+  {
+    "Business Name": "Shake Shack",
+    "Industry": "QSR / Fast Casual",
+    "Brand": "Shake Shack",
+    "Address": "670 Spectrum Center Dr",
+    "City": "Irvine",
+    "Retail Center": "{Retail Centers:Irvine Spectrum Center}",
+    "Latitude": 33.6508,
+    "Longitude": -117.744,
+    "Website": "https://www.shakeshack.com",
+    "Notes": "Direct peer for premium burger / fast-casual concepts at Spectrum."
+  },
+  {
+    "Business Name": "Sweetgreen",
+    "Industry": "QSR / Fast Casual",
+    "Brand": "Sweetgreen",
+    "Address": "6200 Irvine Blvd",
+    "City": "Irvine",
+    "Retail Center": "{Retail Centers:Woodbury Town Center}",
+    "Latitude": 33.6958,
+    "Longitude": -117.7498,
+    "Website": "https://www.sweetgreen.com",
+    "Notes": "Healthy fast-casual peer in family trade area."
+  },
+  {
+    "Business Name": "Starbucks",
+    "Industry": "Coffee / Cafe",
+    "Brand": "Starbucks",
+    "Address": "6501 Quail Hill Pkwy",
+    "City": "Irvine",
+    "Retail Center": "{Retail Centers:Quail Hill Shopping Center}",
+    "Latitude": 33.6452,
+    "Longitude": -117.7852,
+    "Website": "https://www.starbucks.com",
+    "Notes": "National coffee incumbent; drive-thru capable formats nearby."
+  },
+  {
+    "Business Name": "The Coffee Bean & Tea Leaf",
+    "Industry": "Coffee / Cafe",
+    "Brand": "Coffee Bean",
+    "Address": "4501 Campus Dr",
+    "City": "Irvine",
+    "Retail Center": "{Retail Centers:Campus Plaza}",
+    "Latitude": 33.6502,
+    "Longitude": -117.8352,
+    "Website": "https://www.coffeebean.com",
+    "Notes": "Campus-edge coffee competitor."
+  },
+  {
+    "Business Name": "Panda Express",
+    "Industry": "QSR / Fast Casual",
+    "Brand": "Panda Express",
+    "Address": "2700 Alton Pkwy",
+    "City": "Irvine",
+    "Retail Center": "{Retail Centers:Diamond Jamboree}",
+    "Latitude": 33.6849,
+    "Longitude": -117.8116,
+    "Website": "https://www.pandaexpress.com",
+    "Notes": "National QSR within destination dining cluster."
+  },
+  {
+    "Business Name": "Torchy's Tacos",
+    "Industry": "QSR / Fast Casual",
+    "Brand": "Torchy's Tacos",
+    "Address": "1801 E 51st St",
+    "City": "Austin",
+    "Retail Center": "{Retail Centers:Mueller District Retail}",
+    "Latitude": 30.2972,
+    "Longitude": -97.7042,
+    "Website": "https://torchystacos.com",
+    "Notes": "Regional fast-casual peer in Mueller."
+  }
+]

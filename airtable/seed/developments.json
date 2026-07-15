@@ -1,0 +1,103 @@
+[
+  {
+    "Project Name": "The Canopy at Great Park",
+    "Project Type": "Commercial",
+    "City": "Irvine",
+    "Address": "Great Park Neighborhoods / Bosque Trail",
+    "Developer": "Almquist",
+    "Status": "Under Construction",
+    "Residential Units": 0,
+    "Commercial Square Footage": 90000,
+    "Expected Completion Date": "2026-11-30",
+    "Source": "OCBJ / Canopy leasing",
+    "Notes": "First retail hub for Great Park; T&T, In-N-Out, Philz among announced tenants.",
+    "Nearby Retail Centers": [
+      "{Retail Centers:The Canopy at Great Park}",
+      "{Retail Centers:Woodbury Town Center}"
+    ]
+  },
+  {
+    "Project Name": "Portola Springs & Cypress Village Build-Out",
+    "Project Type": "Residential",
+    "City": "Irvine",
+    "Address": "Portola Pkwy corridor",
+    "Developer": "The Irvine Company / merchant builders",
+    "Status": "Under Construction",
+    "Residential Units": 4500,
+    "Commercial Square Footage": 0,
+    "Expected Completion Date": "2027-12-31",
+    "Source": "Irvine Company community plans",
+    "Notes": "Thousands of new homes feeding Woodbury and Great Park retail.",
+    "Nearby Retail Centers": ["{Retail Centers:Woodbury Town Center}"]
+  },
+  {
+    "Project Name": "Great Park Cultural Terrace",
+    "Project Type": "Infrastructure",
+    "City": "Irvine",
+    "Address": "Orange County Great Park",
+    "Developer": "City of Irvine / Great Park",
+    "Status": "Planned",
+    "Residential Units": 0,
+    "Commercial Square Footage": 0,
+    "Expected Completion Date": "2028-06-30",
+    "Source": "OCBJ Great Park coverage",
+    "Notes": "Museums, amphitheater, and park destinations expected to lift weekend visitation.",
+    "Nearby Retail Centers": ["{Retail Centers:The Canopy at Great Park}"]
+  },
+  {
+    "Project Name": "Hoag Irvine Medical Campus Expansion",
+    "Project Type": "Infrastructure",
+    "City": "Irvine",
+    "Address": "Quail Hill / medical district",
+    "Developer": "Hoag",
+    "Status": "Under Construction",
+    "Residential Units": 0,
+    "Commercial Square Footage": 120000,
+    "Expected Completion Date": "2026-09-30",
+    "Source": "Hoag / local planning",
+    "Notes": "Patient and staff traffic supporting Quail Hill convenience and lunch retail.",
+    "Nearby Retail Centers": ["{Retail Centers:Quail Hill Shopping Center}"]
+  },
+  {
+    "Project Name": "Irvine Business Complex Residential Conversion",
+    "Project Type": "Mixed-Use",
+    "City": "Irvine",
+    "Address": "Alton / Jamboree corridor",
+    "Developer": "Multiple",
+    "Status": "Under Construction",
+    "Residential Units": 2200,
+    "Commercial Square Footage": 45000,
+    "Expected Completion Date": "2027-12-31",
+    "Source": "City of Irvine IBC plans",
+    "Notes": "Office-to-residential densification improving evening demand at Diamond Jamboree.",
+    "Nearby Retail Centers": ["{Retail Centers:Diamond Jamboree}"]
+  },
+  {
+    "Project Name": "Mueller East Village Phase III",
+    "Project Type": "Mixed-Use",
+    "City": "Austin",
+    "Address": "Mueller District",
+    "Developer": "Catellus",
+    "Status": "Under Construction",
+    "Residential Units": 1200,
+    "Commercial Square Footage": 85000,
+    "Expected Completion Date": "2026-12-31",
+    "Source": "Mueller development updates",
+    "Notes": "Ground-floor retail with residential above.",
+    "Nearby Retail Centers": ["{Retail Centers:Mueller District Retail}"]
+  },
+  {
+    "Project Name": "Lynx Blue Line TOD Pads",
+    "Project Type": "Mixed-Use",
+    "City": "Charlotte",
+    "Address": "South End stations",
+    "Developer": "Multiple TOD JV",
+    "Status": "Planned",
+    "Residential Units": 800,
+    "Commercial Square Footage": 60000,
+    "Expected Completion Date": "2027-06-30",
+    "Source": "Charlotte TOD pipeline",
+    "Notes": "Transit-oriented retail at station nodes.",
+    "Nearby Retail Centers": ["{Retail Centers:South End Station Retail}"]
+  }
+]
