@@ -1,5 +1,5 @@
 import { useMemo, useState, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { locations } from '../data/locations';
 import { formatRecommendation } from '../lib/scoring';
 import type { LocationProfile } from '../types';
@@ -15,7 +15,8 @@ function pinStyle(loc: LocationProfile): CSSProperties {
 }
 
 export function ScoutPage() {
-  const [query, setQuery] = useState('');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('q') ?? '');
   const [region, setRegion] = useState('all');
   const [selectedId, setSelectedId] = useState(locations[0]?.id ?? '');
 

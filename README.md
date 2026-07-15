@@ -44,4 +44,4 @@ npm run preview # preview production build
 - Vite
 - React Router
 
-Sample market data is included for demo purposes (Austin Mueller, Nashville Gulch, Denver RiNo, Charlotte South End, and more).
+Sample market data is included for demo purposes (Austin Mueller, Nashville Gulch, Denver RiNo, Charlotte South End, Irvine Spectrum / Woodbury / Great Park, and more). Use `getTopLocationsInCity('Irvine')` for the ranked Irvine shortlist.
